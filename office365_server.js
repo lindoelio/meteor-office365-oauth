@@ -61,9 +61,11 @@ OAuth.registerService('office365', 2, null, function(query) {
   return {
     serviceData: {
       id: identity.id,
+      accessToken: OAuth.sealSecret(accessToken),
       displayName: identity.displayName,
       givenName: identity.givenName,
       surname: identity.surname,
+      username: identity.userPrincipalName && identity.userPrincipalName.split('@')[0],
       userPrincipalName: identity.userPrincipalName,
       mail: identity.mail,
       jobTitle: identity.jobTitle,

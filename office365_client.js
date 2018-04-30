@@ -24,7 +24,7 @@ Office365.requestCredential = function(options, credentialRequestCompleteCallbac
   // The Microsoft Office 365 Application not allow the parameter "close" at redirect URLs
   const redirectUri = OAuth._redirectUri('office365', config).replace('?close', '');
 
-  const loginUrl = `https://login.microsoftonline.com/${ config.tenant || 'common' }/oauth2/v2.0/authorize?client_id=${ config.clientId }&response_type=code&redirect_uri=${ redirectUri }&response_mode=query&scope=${ flatScope }&state=${ OAuth._stateParam(loginStyle, credentialToken, redirectUri) }`;
+  const loginUrl = `https://login.microsoftonline.com/${ config.tenant || 'common' }/oauth2/v2.0/authorize?client_id=${ config.clientId }&response_type=code&redirect_uri=${ redirectUri }&response_mode=query&scope=${ flatScope }&state=${ OAuth._stateParam(loginStyle, credentialToken, options && options.redirectUrl) }`;
 
   OAuth.launchLogin({
     loginService: 'office365',

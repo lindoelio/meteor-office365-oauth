@@ -63,7 +63,7 @@ OAuth.registerService('office365', 2, null, function(query) {
     serviceData: {
       id: identity.id,
       accessToken: OAuth.sealSecret(accessToken),
-      refreshToken,
+      refreshToken: OAuth.sealSecret(refreshToken),
       expiresAt,
       displayName: identity.displayName,
       givenName: identity.givenName,
